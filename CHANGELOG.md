@@ -10,4 +10,4 @@
 
 Just rebranding
 
-**Full Changelog**: https://github.com/kanekescom/larast/commits/v0.0.1
+**Full Changelog**: https://github.com/kanekescom/filamentum/commits/v0.0.1

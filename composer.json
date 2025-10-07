@@ -1,12 +1,13 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "kanekescom/larast",
+    "name": "kanekescom/filament",
     "type": "project",
-    "description": "Larast is a Laravel starter kit for development needs, providing a complete ready-to-use environment with popular and essential packages pre-installed.",
+    "description": "Filamentum is a Laravel starter kit with Filament admin panel — clean architecture, auth, roles & permissions, and modern UI components.",
     "keywords": [
         "laravel",
         "starter-kit",
-        "larast",
+        "filamentum",
+        "filament",
         "kanekescom",
         "framework"
     ],
