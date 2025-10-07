@@ -1,6 +1,6 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "kanekescom/filament",
+    "name": "kanekescom/filamentum",
     "type": "project",
     "description": "Filamentum is a Laravel starter kit with Filament admin panel — clean architecture, auth, roles & permissions, and modern UI components.",
     "keywords": [
