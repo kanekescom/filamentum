@@ -6599,143 +6599,6 @@ namespace Illuminate\Support\Facades {
 
             }
     /**
-     * @see \Illuminate\Encryption\Encrypter
-     */
-    class Crypt {
-        /**
-         * Determine if the given key and cipher combination is valid.
-         *
-         * @param string $key
-         * @param string $cipher
-         * @return bool
-         * @static
-         */
-        public static function supported($key, $cipher)
-        {
-            return \Illuminate\Encryption\Encrypter::supported($key, $cipher);
-        }
-
-        /**
-         * Create a new encryption key for the given cipher.
-         *
-         * @param string $cipher
-         * @return string
-         * @static
-         */
-        public static function generateKey($cipher)
-        {
-            return \Illuminate\Encryption\Encrypter::generateKey($cipher);
-        }
-
-        /**
-         * Encrypt the given value.
-         *
-         * @param mixed $value
-         * @param bool $serialize
-         * @return string
-         * @throws \Illuminate\Contracts\Encryption\EncryptException
-         * @static
-         */
-        public static function encrypt($value, $serialize = true)
-        {
-            /** @var \Illuminate\Encryption\Encrypter $instance */
-            return $instance->encrypt($value, $serialize);
-        }
-
-        /**
-         * Encrypt a string without serialization.
-         *
-         * @param string $value
-         * @return string
-         * @throws \Illuminate\Contracts\Encryption\EncryptException
-         * @static
-         */
-        public static function encryptString($value)
-        {
-            /** @var \Illuminate\Encryption\Encrypter $instance */
-            return $instance->encryptString($value);
-        }
-
-        /**
-         * Decrypt the given value.
-         *
-         * @param string $payload
-         * @param bool $unserialize
-         * @return mixed
-         * @throws \Illuminate\Contracts\Encryption\DecryptException
-         * @static
-         */
-        public static function decrypt($payload, $unserialize = true)
-        {
-            /** @var \Illuminate\Encryption\Encrypter $instance */
-            return $instance->decrypt($payload, $unserialize);
-        }
-
-        /**
-         * Decrypt the given string without unserialization.
-         *
-         * @param string $payload
-         * @return string
-         * @throws \Illuminate\Contracts\Encryption\DecryptException
-         * @static
-         */
-        public static function decryptString($payload)
-        {
-            /** @var \Illuminate\Encryption\Encrypter $instance */
-            return $instance->decryptString($payload);
-        }
-
-        /**
-         * Get the encryption key that the encrypter is currently using.
-         *
-         * @return string
-         * @static
-         */
-        public static function getKey()
-        {
-            /** @var \Illuminate\Encryption\Encrypter $instance */
-            return $instance->getKey();
-        }
-
-        /**
-         * Get the current encryption key and all previous encryption keys.
-         *
-         * @return array
-         * @static
-         */
-        public static function getAllKeys()
-        {
-            /** @var \Illuminate\Encryption\Encrypter $instance */
-            return $instance->getAllKeys();
-        }
-
-        /**
-         * Get the previous encryption keys.
-         *
-         * @return array
-         * @static
-         */
-        public static function getPreviousKeys()
-        {
-            /** @var \Illuminate\Encryption\Encrypter $instance */
-            return $instance->getPreviousKeys();
-        }
-
-        /**
-         * Set the previous / legacy encryption keys that should be utilized if decryption fails.
-         *
-         * @param array $keys
-         * @return \Illuminate\Encryption\Encrypter
-         * @static
-         */
-        public static function previousKeys($keys)
-        {
-            /** @var \Illuminate\Encryption\Encrypter $instance */
-            return $instance->previousKeys($keys);
-        }
-
-            }
-    /**
      * @see https://carbon.nesbot.com/docs/
      * @see https://github.com/briannesbitt/Carbon/blob/master/src/Carbon/Factory.php
      * @method static bool canBeCreatedFromFormat(?string $date, string $format)
@@ -23555,6 +23418,291 @@ namespace Barryvdh\Debugbar\Facades {
             }
     }
 
+namespace BezhanSalleh\FilamentShield\Facades {
+    /**
+     * @see \BezhanSalleh\FilamentShield\FilamentShield
+     */
+    class FilamentShield {
+        /**
+         * @static
+         */
+        public static function buildPermissionKeyUsing($callback)
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->buildPermissionKeyUsing($callback);
+        }
+
+        /**
+         * @static
+         */
+        public static function getResources()
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->getResources();
+        }
+
+        /**
+         * @static
+         */
+        public static function getPages()
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->getPages();
+        }
+
+        /**
+         * @static
+         */
+        public static function getWidgets()
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->getWidgets();
+        }
+
+        /**
+         * @static
+         */
+        public static function getCustomPermissions($localized = false)
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->getCustomPermissions($localized);
+        }
+
+        /**
+         * Get the localized resource permission label
+         *
+         * @static
+         */
+        public static function getLocalizedResourcePermissionLabel($permission)
+        {
+            return \BezhanSalleh\FilamentShield\FilamentShield::getLocalizedResourcePermissionLabel($permission);
+        }
+
+        /**
+         * @static
+         */
+        public static function defaultPermissionKeyBuilder($affix, $separator, $subject, $case)
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->defaultPermissionKeyBuilder($affix, $separator, $subject, $case);
+        }
+
+        /**
+         * @static
+         */
+        public static function getDefaultPermissionKeys($entity, $affixes)
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->getDefaultPermissionKeys($entity, $affixes);
+        }
+
+        /**
+         * @static
+         */
+        public static function getEntitiesPermissions()
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->getEntitiesPermissions();
+        }
+
+        /**
+         * @static
+         */
+        public static function prohibitDestructiveCommands($prohibit = true)
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->prohibitDestructiveCommands($prohibit);
+        }
+
+        /**
+         * @static
+         */
+        public static function discoverEntities($entityType)
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->discoverEntities($entityType);
+        }
+
+        /**
+         * @static
+         */
+        public static function discoverResources()
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->discoverResources();
+        }
+
+        /**
+         * @static
+         */
+        public static function discoverPages()
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->discoverPages();
+        }
+
+        /**
+         * @static
+         */
+        public static function discoverWidgets()
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->discoverWidgets();
+        }
+
+        /**
+         * @static
+         */
+        public static function transformResources()
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->transformResources();
+        }
+
+        /**
+         * @static
+         */
+        public static function transformPages()
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->transformPages();
+        }
+
+        /**
+         * @static
+         */
+        public static function transformWidgets()
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->transformWidgets();
+        }
+
+        /**
+         * @return array<string, string>
+         * @static
+         */
+        public static function transformCustomPermissions($localizedOrFormatted = false)
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->transformCustomPermissions($localizedOrFormatted);
+        }
+
+        /**
+         * @static
+         */
+        public static function getLocalizedResourceLabel($resource)
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->getLocalizedResourceLabel($resource);
+        }
+
+        /**
+         * @static
+         */
+        public static function getLocalizedPageLabel($page)
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->getLocalizedPageLabel($page);
+        }
+
+        /**
+         * @static
+         */
+        public static function getLocalizedWidgetLabel($widget)
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->getLocalizedWidgetLabel($widget);
+        }
+
+        /**
+         * @static
+         */
+        public static function getAffixLabel($affix, $resource = null)
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->getAffixLabel($affix, $resource);
+        }
+
+        /**
+         * @static
+         */
+        public static function getLocalizedResourceAffixes($resource = null)
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->getLocalizedResourceAffixes($resource);
+        }
+
+        /**
+         * @static
+         */
+        public static function getPermissionLabel($permission)
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->getPermissionLabel($permission);
+        }
+
+        /**
+         * @static
+         */
+        public static function getResourcePermissions($key)
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->getResourcePermissions($key);
+        }
+
+        /**
+         * @static
+         */
+        public static function getResourcePolicyActions($key)
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->getResourcePolicyActions($key);
+        }
+
+        /**
+         * @static
+         */
+        public static function getResourcePermissionsWithLabels($key)
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->getResourcePermissionsWithLabels($key);
+        }
+
+        /**
+         * @static
+         */
+        public static function getResourcePolicyActionsWithPermissions($key)
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->getResourcePolicyActionsWithPermissions($key);
+        }
+
+        /**
+         * @static
+         */
+        public static function getAllResourcePermissionsWithLabels()
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->getAllResourcePermissionsWithLabels();
+        }
+
+        /**
+         * @template T
+         * @param T  | callable(): T  $value
+         * @param array<string, mixed> $namedInjections
+         * @param array<string, mixed> $typedInjections
+         * @return T
+         * @static
+         */
+        public static function evaluate($value, $namedInjections = [], $typedInjections = [])
+        {
+            /** @var \BezhanSalleh\FilamentShield\FilamentShield $instance */
+            return $instance->evaluate($value, $namedInjections, $typedInjections);
+        }
+
+            }
+    }
+
 namespace Livewire {
     /**
      * @see \Livewire\LivewireManager
@@ -24359,6 +24507,26 @@ namespace Illuminate\Routing {
         public static function lazy($enabled = true)
         {
             return \Illuminate\Routing\Route::lazy($enabled);
+        }
+
+        /**
+         * @see \Spatie\Permission\PermissionServiceProvider::registerMacroHelpers()
+         * @param mixed $roles
+         * @static
+         */
+        public static function role($roles = [])
+        {
+            return \Illuminate\Routing\Route::role($roles);
+        }
+
+        /**
+         * @see \Spatie\Permission\PermissionServiceProvider::registerMacroHelpers()
+         * @param mixed $permissions
+         * @static
+         */
+        public static function permission($permissions = [])
+        {
+            return \Illuminate\Routing\Route::permission($permissions);
         }
 
             }
@@ -26765,6 +26933,17 @@ namespace Livewire\Features\SupportTesting {
         }
 
         /**
+         * @see \Filament\Tables\Testing\TestsColumns::toggleAllTableColumns()
+         * @param bool $condition
+         * @return static
+         * @static
+         */
+        public static function toggleAllTableColumns($condition = true)
+        {
+            return \Livewire\Features\SupportTesting\Testable::toggleAllTableColumns($condition);
+        }
+
+        /**
          * @see \Filament\Tables\Testing\TestsFilters::filterTable()
          * @param string $name
          * @param mixed $data
@@ -27075,7 +27254,6 @@ namespace  {
     class Config extends \Illuminate\Support\Facades\Config {}
     class Context extends \Illuminate\Support\Facades\Context {}
     class Cookie extends \Illuminate\Support\Facades\Cookie {}
-    class Crypt extends \Illuminate\Support\Facades\Crypt {}
     class Date extends \Illuminate\Support\Facades\Date {}
     class DB extends \Illuminate\Support\Facades\DB {}
 
@@ -32359,6 +32537,7 @@ namespace  {
     class Vite extends \Illuminate\Support\Facades\Vite {}
     class EloquentSerialize extends \AnourValar\EloquentSerialize\Facades\EloquentSerializeFacade {}
     class Debugbar extends \Barryvdh\Debugbar\Facades\Debugbar {}
+    class FilamentShield extends \BezhanSalleh\FilamentShield\Facades\FilamentShield {}
     class Livewire extends \Livewire\Livewire {}
 }
 
