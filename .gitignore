@@ -21,6 +21,7 @@ mcp.json
 /storage/*.key
 /storage/pail
 /vendor
+boost.json
 Homestead.json
 Homestead.yaml
 Thumbs.db
