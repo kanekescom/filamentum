@@ -41,6 +41,36 @@ composer install
 
 After installation, your application will be ready with all the essential packages and configurations set up.
 
+## AI Coding Assistance
+
+For developers using AI coding assistants, run the following command to install the MCP server and coding guidelines:
+
+```bash
+php artisan boost:install
+```
+
+This will set up the Model Context Protocol (MCP) server and configure coding guidelines that enhance your AI-assisted development experience.
+
+### Keeping Guidelines Up-to-Date
+
+You may want to periodically update your local AI guidelines to ensure they reflect the latest versions of the Laravel ecosystem packages you have installed. To do so, you can use the boost:update Artisan command:
+
+```bash
+php artisan boost:update
+```
+
+You may also automate this process by adding it to your Composer "post-update-cmd" scripts:
+
+```json
+{
+  "scripts": {
+    "post-update-cmd": [
+      "@php artisan boost:update --ansi"
+    ]
+  }
+}
+```
+
 ## Installed Packages
 
 Filamentum comes with several pre-installed packages to help you build your application:
