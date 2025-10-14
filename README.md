@@ -71,10 +71,29 @@ You may also automate this process by adding it to your Composer "post-update-cm
 }
 ```
 
+## Laravel Octane
+
+This project comes with Laravel Octane pre-installed for high-performance serving of your Laravel application. To use Octane with FrankenPHP (the default server for this project), you need to run the installation command:
+
+```bash
+php artisan octane:install
+```
+
+When prompted, select "frankenphp" as your server.
+
+After installation, you can start your application using Octane with:
+
+```bash
+php artisan octane:start
+```
+
+For more information about Laravel Octane configuration and usage, please refer to the [official Laravel Octane documentation](https://laravel.com/docs/12.x/octane).
+
 ## Installed Packages
 
 Filamentum comes with several pre-installed packages to help you build your application:
 
+- [laravel/octane](https://github.com/laravel/octane) v2 - Laravel Octane for high-performance Laravel applications with FrankenPHP
 - [laravel/boost](https://github.com/laravel/boost) v1 - Laravel Boost for enhanced development experience with Laravel
 - [laravel/telescope](https://github.com/laravel/telescope) v5 - Laravel Telescope for debugging and monitoring your Laravel applications
 - [filament/filament](https://github.com/filamentphp/filament) v4 - A collection of beautiful TALL stack admin panel components
