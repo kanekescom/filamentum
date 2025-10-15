@@ -93,13 +93,25 @@ For more information about Laravel Octane configuration and usage, please refer 
 
 Filamentum comes with several pre-installed packages to help you build your application:
 
-- [laravel/octane](https://github.com/laravel/octane) v2 - Laravel Octane for high-performance Laravel applications with FrankenPHP
-- [laravel/boost](https://github.com/laravel/boost) v1 - Laravel Boost for enhanced development experience with Laravel
-- [laravel/telescope](https://github.com/laravel/telescope) v5 - Laravel Telescope for debugging and monitoring your Laravel applications
-- [filament/filament](https://github.com/filamentphp/filament) v4 - A collection of beautiful TALL stack admin panel components
+- [laravel/octane](https://github.com/laravel/octane) v2 - Supercharge your Laravel application's performance with high-powered application servers
+- [laravel/boost](https://github.com/laravel/boost) v1 - Laravel Boost for enhanced AI-assisted development experience with Laravel
+- [laravel/telescope](https://github.com/laravel/telescope) v5 - An elegant debug assistant for the Laravel framework
+- [filament/filament](https://github.com/filamentphp/filament) v4 - A powerful open source UI framework for Laravel to build admin panels & apps fast
 - [spatie/laravel-query-builder](https://github.com/spatie/laravel-query-builder) v6 - Easily build Eloquent queries from API requests
-- [barryvdh/laravel-debugbar](https://github.com/barryvdh/laravel-debugbar) v3 - Laravel Debugbar for debugging and profiling your Laravel applications
+- [barryvdh/laravel-debugbar](https://github.com/barryvdh/laravel-debugbar) v3 - Debugbar for Laravel (Integrates PHP Debug Bar)
 - [barryvdh/laravel-ide-helper](https://github.com/barryvdh/laravel-ide-helper) v3 - IDE Helper for generating helper files for Laravel facades and adding PHPDocs
+
+## Recommended Additional Packages
+
+To further enhance your Laravel application, consider adding these recommended packages:
+
+- [laravel/nightwatch](https://github.com/laravel/nightwatch) - Laravel Nightwatch for application monitoring and performance insights
+- [laravel/horizon](https://github.com/laravel/horizon) - Dashboard and code-driven configuration for Laravel queues
+- [laravel/sanctum](https://github.com/laravel/sanctum) v - Featherweight authentication system for SPAs and simple APIs
+- [laravel/passport](https://github.com/laravel/passport) - OAuth2 server and API authentication package that is simple and enjoyable to use
+- [sentry/sentry-laravel](https://github.com/getsentry/sentry-laravel) - The official Laravel SDK for Sentry error tracking and monitoring
+
+Refer to each package's documentation for specific installation and configuration instructions.
 
 ## License
 
