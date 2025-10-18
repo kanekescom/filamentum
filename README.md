@@ -41,6 +41,16 @@ composer install
 
 After installation, your application will be ready with all the essential packages and configurations set up.
 
+## Creating a User
+
+To access the Filament admin panel, you'll need to create a user account. Run the following command to create a new Filament user:
+
+```bash
+php artisan make:filament-user
+```
+
+This command will prompt you to enter the user's name, email, and password. Once created, you can log in to the admin panel at `/admin` using these credentials.
+
 ## AI Coding Assistance
 
 For developers using AI coding assistants, run the following command to install the MCP server and coding guidelines:
