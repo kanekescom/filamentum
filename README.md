@@ -137,10 +137,11 @@ Filamentum comes with several pre-installed packages to help you build your appl
 
 To further enhance your Laravel application, consider adding these recommended packages:
 
-- [laravel/nightwatch](https://github.com/laravel/nightwatch) - Laravel Nightwatch for application monitoring and performance insights
 - [laravel/horizon](https://github.com/laravel/horizon) - Dashboard and code-driven configuration for Laravel queues
-- [laravel/sanctum](https://github.com/laravel/sanctum) v - Featherweight authentication system for SPAs and simple APIs
+- [laravel/nightwatch](https://github.com/laravel/nightwatch) - Laravel Nightwatch for application monitoring and performance insights
 - [laravel/passport](https://github.com/laravel/passport) - OAuth2 server and API authentication package that is simple and enjoyable to use
+- [laravel/sanctum](https://github.com/laravel/sanctum) v - Featherweight authentication system for SPAs and simple APIs
+- [laravel/socialite](https://github.com/laravel/socialite) - Laravel Socialite for OAuth authentication with social networks
 - [sentry/sentry-laravel](https://github.com/getsentry/sentry-laravel) - The official Laravel SDK for Sentry error tracking and monitoring
 
 Refer to each package's documentation for specific installation and configuration instructions.
