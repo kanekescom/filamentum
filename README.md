@@ -43,7 +43,7 @@ After installation, your application will be ready with all the essential packag
 
 ## Creating a User
 
-To access the Filament admin panel, you'll need to create a user account. You have two options:
+To access the Filament admin panel, you'll need to create a user account. You have several options:
 
 ### Option 1: Interactive Command
 
@@ -57,16 +57,25 @@ This command will prompt you to enter the user's name, email, and password.
 
 ### Option 2: Database Seeding
 
-Alternatively, you can create a default user account by running the database seeder:
+Alternatively, you can create default users with predefined roles by running the database seeder:
 
 ```bash
 php artisan db:seed
 ```
 
-This will create a user with the following credentials:
+This will create users with the following credentials and roles:
+
+| Name              | Email                     | Role        | Password  |
+|-------------------|---------------------------|-------------|-----------|
+| Super Admin User  | superadmin@filamentum.com | Super Admin | password  |
+| Admin User        | admin@filamentum.com      | Admin       | password  |
+| Regular User      | user@filamentum.com       | User        | password  |
+
+Additionally, a default administrator user will be created:
 - Name: `Filamentum Administrator`
 - Email: `filamentum@example.com`
 - Password: `password`
+- Role: Default admin access
 
 Once created, you can log in to the admin panel at `/admin` using these credentials.
 
