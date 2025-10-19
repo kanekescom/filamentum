@@ -13,11 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Filamentum Administrator',
-            'email' => 'filamentum@example.com',
-        ]);
+        // Run the role and user seeder
+        $this->call(RoleUserSeeder::class);
     }
 }

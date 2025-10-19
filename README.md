@@ -71,12 +71,6 @@ This will create users with the following credentials and roles:
 | Admin User        | admin@filamentum.com      | Admin       | password  |
 | Regular User      | user@filamentum.com       | User        | password  |
 
-Additionally, a default administrator user will be created:
-- Name: `Filamentum Administrator`
-- Email: `filamentum@example.com`
-- Password: `password`
-- Role: Default admin access
-
 Once created, you can log in to the admin panel at `/admin` using these credentials.
 
 ## AI Coding Assistance
