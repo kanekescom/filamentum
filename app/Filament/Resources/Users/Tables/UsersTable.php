@@ -34,11 +34,15 @@ class UsersTable
                     ->badge()
                     ->separator(', '),
                 TextColumn::make('created_at')
-                    ->dateTime()
+                    ->label('Created')
+                    ->since()
+                    ->tooltip(fn($record) => $record->created_at?->format('Y-m-d H:i:s'))
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->label('Updated')
+                    ->since()
+                    ->tooltip(fn($record) => $record->updated_at?->format('Y-m-d H:i:s'))
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true)
             ])

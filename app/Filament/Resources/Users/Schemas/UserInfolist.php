@@ -15,17 +15,23 @@ class UserInfolist
                 TextEntry::make('email')
                     ->label('Email address'),
                 TextEntry::make('email_verified_at')
-                    ->dateTime()
+                    ->label('Email Verified')
+                    ->since()
+                    ->tooltip(fn($record) => $record->email_verified_at?->format('Y-m-d H:i:s'))
                     ->placeholder('-'),
                 TextEntry::make('roles.name')
                     ->label('Roles')
                     ->badge()
                     ->separator(', '),
                 TextEntry::make('created_at')
-                    ->dateTime()
+                    ->label('Created')
+                    ->since()
+                    ->tooltip(fn($record) => $record->created_at?->format('Y-m-d H:i:s'))
                     ->placeholder('-'),
                 TextEntry::make('updated_at')
-                    ->dateTime()
+                    ->label('Updated')
+                    ->since()
+                    ->tooltip(fn($record) => $record->updated_at?->format('Y-m-d H:i:s'))
                     ->placeholder('-'),
             ]);
     }
