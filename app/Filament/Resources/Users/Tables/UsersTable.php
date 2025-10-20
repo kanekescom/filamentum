@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Users\Tables;
 
+use App\Models\User;
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -22,7 +24,8 @@ class UsersTable
                     ->searchable(),
                 TextColumn::make('email_verified_at')
                     ->dateTime()
-                    ->sortable(),
+                    ->sortable()
+                    ->label('Verified At'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -38,6 +41,15 @@ class UsersTable
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),
+                Action::make('verify_email')
+                    ->label('Verify Email')
+                    ->icon('heroicon-o-check-badge')
+                    ->color('success')
+                    ->visible(fn(User $record): bool => $record->email_verified_at === null)
+                    ->requiresConfirmation()
+                    ->action(function (User $record): void {
+                        $record->update(['email_verified_at' => now()]);
+                    }),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
