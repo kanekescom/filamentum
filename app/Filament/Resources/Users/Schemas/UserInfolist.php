@@ -23,7 +23,9 @@ class UserInfolist
                 TextEntry::make('roles.name')
                     ->label('Roles')
                     ->badge()
-                    ->separator(', '),
+                    ->listWithLineBreaks()
+                    ->limitList(1)
+                    ->expandableLimitedList(),
                 TextEntry::make('created_at')
                     ->label('Created')
                     ->since()

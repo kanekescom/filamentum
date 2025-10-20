@@ -32,7 +32,9 @@ class UsersTable
                 TextColumn::make('roles.name')
                     ->label('Roles')
                     ->badge()
-                    ->separator(', '),
+                    ->listWithLineBreaks()
+                    ->limitList(1)
+                    ->expandableLimitedList(),
                 TextColumn::make('created_at')
                     ->label('Created')
                     ->since()
