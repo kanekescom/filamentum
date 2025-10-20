@@ -35,6 +35,10 @@ class UsersTable
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('roles.name')
+                    ->label('Roles')
+                    ->badge()
+                    ->separator(', ')
             ])
             ->filters([
                 //

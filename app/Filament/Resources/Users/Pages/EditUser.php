@@ -3,10 +3,12 @@
 namespace App\Filament\Resources\Users\Pages;
 
 use App\Filament\Resources\Users\UserResource;
+use App\Models\User;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class EditUser extends EditRecord
 {
@@ -29,6 +31,24 @@ class EditUser extends EditRecord
 
         // Remove new_password from data as it's not a real field
         unset($data['new_password']);
+
+        return $data;
+    }
+
+    protected function afterSave(): void
+    {
+        // Sync roles with the user
+        $roles = $this->data['roles'] ?? [];
+        $roleModels = Role::whereIn('id', $roles)->get();
+        $this->record->syncRoles($roleModels);
+    }
+
+    protected function mutateFormDataBeforeFill(array $data): array
+    {
+        // Load the user's existing roles
+        /** @var User $user */
+        $user = $this->getRecord();
+        $data['roles'] = $user->roles->pluck('id')->toArray();
 
         return $data;
     }

@@ -3,8 +3,10 @@
 namespace App\Filament\Resources\Users\Pages;
 
 use App\Filament\Resources\Users\UserResource;
+use App\Models\User;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class CreateUser extends CreateRecord
 {
@@ -17,5 +19,15 @@ class CreateUser extends CreateRecord
         }
 
         return $data;
+    }
+
+    protected function afterCreate(): void
+    {
+        // Assign roles to the user
+        $roles = $this->data['roles'] ?? [];
+        if (!empty($roles)) {
+            $roleModels = Role::whereIn('id', $roles)->get();
+            $this->record->syncRoles($roleModels);
+        }
     }
 }
