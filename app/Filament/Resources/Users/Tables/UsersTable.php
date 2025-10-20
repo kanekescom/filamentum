@@ -9,6 +9,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -23,10 +24,15 @@ class UsersTable
                 TextColumn::make('email')
                     ->label('Email address')
                     ->searchable(),
-                TextColumn::make('email_verified_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->label('Verified At'),
+                IconColumn::make('email_verified_at')
+                    ->label('Verified')
+                    ->boolean()
+                    ->tooltip(fn($record) => $record->email_verified_at ? $record->email_verified_at->format('Y-m-d H:i:s') : 'Not verified')
+                    ->sortable(),
+                TextColumn::make('roles.name')
+                    ->label('Roles')
+                    ->badge()
+                    ->separator(', '),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -34,11 +40,7 @@ class UsersTable
                 TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('roles.name')
-                    ->label('Roles')
-                    ->badge()
-                    ->separator(', ')
+                    ->toggleable(isToggledHiddenByDefault: true)
             ])
             ->filters([
                 //
