@@ -13,6 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // Run the Shield seeder first to set up roles and permissions
+        $this->call(ShieldSeeder::class);
+
         // Run the role and user seeder
         $this->call(RoleUserSeeder::class);
     }
