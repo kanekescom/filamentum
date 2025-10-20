@@ -29,7 +29,7 @@ class RoleUserSeeder extends Seeder
         );
 
         // Assign role only if user doesn't already have it
-        if (!$superAdmin->hasRole('Super Admin')) {
+        if (! $superAdmin->hasRole('Super Admin')) {
             $superAdmin->assignRole($superAdminRole);
         }
 
@@ -43,7 +43,7 @@ class RoleUserSeeder extends Seeder
         );
 
         // Assign role only if user doesn't already have it
-        if (!$admin->hasRole('Admin')) {
+        if (! $admin->hasRole('Admin')) {
             $admin->assignRole($adminRole);
         }
 
@@ -57,7 +57,7 @@ class RoleUserSeeder extends Seeder
         );
 
         // Assign role only if user doesn't already have it
-        if (!$regularUser->hasRole('User')) {
+        if (! $regularUser->hasRole('User')) {
             $regularUser->assignRole($userRole);
         }
     }
