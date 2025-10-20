@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Users\Schemas;
 
+use Filament\Infolists\Components\IconEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
 
@@ -26,12 +27,12 @@ class UserInfolist
                 TextEntry::make('created_at')
                     ->label('Created')
                     ->since()
-                    ->tooltip(fn($record) => $record->created_at?->format('Y-m-d H:i:s'))
+                    ->dateTimeTooltip()
                     ->placeholder('-'),
                 TextEntry::make('updated_at')
                     ->label('Updated')
                     ->since()
-                    ->tooltip(fn($record) => $record->updated_at?->format('Y-m-d H:i:s'))
+                    ->dateTimeTooltip()
                     ->placeholder('-'),
             ]);
     }
