@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\Users\Schemas;
 
-use Filament\Infolists\Components\IconEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
 
@@ -18,7 +17,7 @@ class UserInfolist
                 TextEntry::make('email_verified_at')
                     ->label('Email Verified')
                     ->since()
-                    ->tooltip(fn($record) => $record->email_verified_at?->format('Y-m-d H:i:s'))
+                    ->tooltip(fn ($record) => $record->email_verified_at?->format('Y-m-d H:i:s'))
                     ->placeholder('-'),
                 TextEntry::make('roles.name')
                     ->label('Roles')

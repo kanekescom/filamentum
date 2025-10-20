@@ -14,7 +14,7 @@ class CreateUser extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        if (!empty($data['password'])) {
+        if (! empty($data['password'])) {
             $data['password'] = Hash::make($data['password']);
         }
 
@@ -25,7 +25,7 @@ class CreateUser extends CreateRecord
     {
         // Assign roles to the user
         $roles = $this->data['roles'] ?? [];
-        if (!empty($roles)) {
+        if (! empty($roles)) {
             $roleModels = Role::whereIn('id', $roles)->get();
             $this->record->syncRoles($roleModels);
         }

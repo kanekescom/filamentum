@@ -5,7 +5,6 @@ namespace App\Filament\Resources\Users\Schemas;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
-use Spatie\Permission\Models\Role;
 
 class UserForm
 {
@@ -29,12 +28,12 @@ class UserForm
                     ->helperText('Must be a valid email address'),
                 TextInput::make('password')
                     ->password()
-                    ->required(fn(string $operation): bool => $operation === 'create')
+                    ->required(fn (string $operation): bool => $operation === 'create')
                     ->maxLength(255)
                     ->minLength(8)
                     ->placeholder('Enter password')
                     ->helperText('Password must be at least 8 characters long')
-                    ->visible(fn(string $operation): bool => $operation === 'create'),
+                    ->visible(fn (string $operation): bool => $operation === 'create'),
                 TextInput::make('new_password')
                     ->password()
                     ->label('New Password')
@@ -42,13 +41,13 @@ class UserForm
                     ->minLength(8)
                     ->placeholder('Enter new password')
                     ->helperText('Leave blank to keep current password. Must be at least 8 characters long')
-                    ->visible(fn(string $operation): bool => $operation === 'edit'),
+                    ->visible(fn (string $operation): bool => $operation === 'edit'),
                 Select::make('roles')
                     ->relationship('roles', 'name')
                     ->multiple()
                     ->preload()
                     ->label('Roles')
-                    ->helperText('Select one or more roles for this user')
+                    ->helperText('Select one or more roles for this user'),
             ]);
     }
 }
