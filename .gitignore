@@ -20,6 +20,7 @@ mcp.json
 /public/storage
 /storage/*.key
 /storage/pail
+/tests/Browser/Screenshots
 /vendor
 boost.json
 Homestead.json
