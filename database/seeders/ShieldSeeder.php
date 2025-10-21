@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
 
 class ShieldSeeder extends Seeder
@@ -88,7 +88,7 @@ class ShieldSeeder extends Seeder
 
                 if (! blank($rolePlusPermission['permissions'])) {
                     $permissionModels = collect($rolePlusPermission['permissions'])
-                        ->map(fn($permission) => Permission::firstOrCreate([
+                        ->map(fn ($permission) => Permission::firstOrCreate([
                             'name' => $permission,
                             'guard_name' => $rolePlusPermission['guard_name'],
                         ]))

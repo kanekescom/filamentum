@@ -1,10 +1,10 @@
 <?php
 
-use Database\Seeders\ShieldSeeder;
-use Database\Seeders\RoleUserSeeder;
 use App\Models\User;
-use Spatie\Permission\Models\Role;
+use Database\Seeders\RoleUserSeeder;
+use Database\Seeders\ShieldSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Spatie\Permission\Models\Role;
 
 uses(RefreshDatabase::class);
 

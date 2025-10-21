@@ -1,9 +1,9 @@
 <?php
 
 use Database\Seeders\ShieldSeeder;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 uses(RefreshDatabase::class);
 
