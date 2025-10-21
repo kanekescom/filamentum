@@ -6,8 +6,6 @@ use Database\Seeders\ShieldSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Spatie\Permission\Models\Role;
 
-uses(RefreshDatabase::class);
-
 beforeEach(function () {
     $this->seed(ShieldSeeder::class);
     $this->seed(RoleUserSeeder::class);
