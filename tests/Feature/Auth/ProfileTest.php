@@ -57,9 +57,35 @@ it('displays profile page with correct content for regular user', function () {
     $response->assertSee($user->email);
 });
 
-it('shows profile form with proper structure', function () {
+it('shows profile form with proper structure for super admin', function () {
     // Authenticate as super admin
     $user = $this->superAdmin;
+    $response = $this->actingAs($user)->get('/admin/profile');
+
+    $response->assertStatus(200);
+    // Check for form elements
+    $response->assertSee('input');
+    $response->assertSee('button');
+    $response->assertSee('name');
+    $response->assertSee('email');
+});
+
+it('shows profile form with proper structure for admin', function () {
+    // Authenticate as super admin
+    $user = $this->admin;
+    $response = $this->actingAs($user)->get('/admin/profile');
+
+    $response->assertStatus(200);
+    // Check for form elements
+    $response->assertSee('input');
+    $response->assertSee('button');
+    $response->assertSee('name');
+    $response->assertSee('email');
+});
+
+it('shows profile form with proper structure for regular user', function () {
+    // Authenticate as super admin
+    $user = $this->regularUser;
     $response = $this->actingAs($user)->get('/admin/profile');
 
     $response->assertStatus(200);

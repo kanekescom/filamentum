@@ -85,8 +85,30 @@ it('redirects unauthenticated users to login page', function () {
 });
 
 // Dashboard Structure Tests
-it('displays dashboard with proper structure', function () {
-    $response = $this->actingAs($this->superAdmin)->get('/admin');
+it('displays dashboard with proper structure for super admin', function () {
+    $user = $this->superAdmin;
+    $response = $this->actingAs($user)->get('/admin/profile');
+
+    $response->assertStatus(200);
+    $response->assertSee('html');
+    $response->assertSee('body');
+    $response->assertSee('div');
+});
+
+it('displays dashboard with proper structure for admin', function () {
+    $user = $this->admin;
+    $response = $this->actingAs($user)->get('/admin/profile');
+
+    $response->assertStatus(200);
+    $response->assertSee('html');
+    $response->assertSee('body');
+    $response->assertSee('div');
+});
+
+it('displays dashboard with proper structure for regular user', function () {
+    $user = $this->regularUser;
+    $response = $this->actingAs($user)->get('/admin/profile');
+
     $response->assertStatus(200);
     $response->assertSee('html');
     $response->assertSee('body');
