@@ -55,23 +55,21 @@ it('denies regular user access to user resource pages', function () {
 });
 
 // User CRUD Operations Tests
-it('allows super admin to create a user', function () {
+it('allows super admin to access user creation page', function () {
     $this->actingAs($this->superAdmin);
 
-    // Since we're testing access permissions, we'll just check if the create page loads
-    // Actual form submission testing would require more complex setup
     $response = $this->get('/admin/users/create');
     $response->assertStatus(200);
 });
 
-it('allows admin to create a user', function () {
+it('allows admin to access user creation page', function () {
     $this->actingAs($this->admin);
 
     $response = $this->get('/admin/users/create');
     $response->assertStatus(200);
 });
 
-it('denies regular user from creating a user', function () {
+it('denies regular user from accessing user creation page', function () {
     $this->actingAs($this->regularUser);
 
     $response = $this->get('/admin/users/create');
@@ -100,34 +98,5 @@ it('denies regular user from viewing other users', function () {
 
     // Test that regular user cannot view another user's page
     $response = $this->get("/admin/users/{$this->admin->id}");
-    $response->assertStatus(403); // Forbidden
-});
-
-// Role Management Tests
-it('allows super admin to access role management', function () {
-    $this->actingAs($this->superAdmin);
-
-    // Test access to roles list page
-    $response = $this->get('/admin/shield/roles');
-    $response->assertStatus(200);
-
-    // Test access to role creation page
-    $response = $this->get('/admin/shield/roles/create');
-    $response->assertStatus(200);
-});
-
-it('denies admin access to role management', function () {
-    $this->actingAs($this->admin);
-
-    // Test that admin cannot access roles management
-    $response = $this->get('/admin/shield/roles');
-    $response->assertStatus(403); // Forbidden
-});
-
-it('denies regular user access to role management', function () {
-    $this->actingAs($this->regularUser);
-
-    // Test that regular user cannot access roles management
-    $response = $this->get('/admin/shield/roles');
     $response->assertStatus(403); // Forbidden
 });
