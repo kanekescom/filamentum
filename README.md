@@ -7,9 +7,9 @@
 <a href="https://packagist.org/packages/kanekescom/filamentum"><img src="https://img.shields.io/github/license/kanekescom/filamentum" alt="License"></a>
 </p>
 
-## About
+## About Filamentum
 
-Filamentum is a Laravel 12 starter kit that comes with the Filament admin panel and a curated collection of popular and essential packages pre-installed.
+Filamentum is a Laravel 12 starter kit with the Filament admin panel and essential packages pre-installed.
 
 
 ## Installation
