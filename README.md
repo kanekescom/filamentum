@@ -132,6 +132,7 @@ Filamentum comes with several pre-installed packages to help you build your appl
 - [laravel/telescope](https://github.com/laravel/telescope) v5 - An elegant debug assistant for the Laravel framework
 - [filament/filament](https://github.com/filamentphp/filament) v4 - A powerful open source UI framework for Laravel to build admin panels & apps fast
 - [bezhansalleh/filament-shield](https://github.com/bezhanSalleh/filament-shield) v4 - Easily manage roles & permissions for Filament's resources, pages & widgets through spatie/laravel-permission
+- [spatie/laravel-backup](https://github.com/spatie/laravel-backup) v9 - A package to backup your application and database
 - [spatie/laravel-permission](https://github.com/spatie/laravel-permission) v6 - Permission handling for Laravel with roles and permissions management
 - [spatie/laravel-query-builder](https://github.com/spatie/laravel-query-builder) v6 - Easily build Eloquent queries from API requests
 - [pestphp/pest](https://github.com/pestphp/pest) v4 - An elegant PHP testing framework with a focus on simplicity, meticulously designed to bring back the joy of testing in PHP
