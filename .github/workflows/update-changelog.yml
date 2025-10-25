@@ -1,105 +1,31 @@
-name: Update Changelog
+name: "Update Changelog"
 
 on:
   release:
     types: [released]
 
-permissions:
-  contents: write
-
 jobs:
   update:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          ref: ${{ github.event.release.target_commitish }}
 
-      - name: Configure Git
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Update Changelog
+        uses: stefanzweifel/changelog-updater-action@v1
+        with:
+          latest-version: ${{ github.event.release.tag_name }}
+          release-notes: ${{ github.event.release.body }}
 
-      - name: Determine tags
-        id: tags
-        env:
-          TAG_FROM_EVENT: ${{ github.event.release.tag_name }}
-        run: |
-          REPO="${GITHUB_REPOSITORY}"
-          TAG="${TAG_FROM_EVENT#refs/tags/}"
-
-          # Find the previous tag (or fallback to the first commit)
-          PREV="$(git tag --sort=-v:refname | grep -v "^${TAG}$" | head -n1 || true)"
-          if [ -z "$PREV" ]; then
-            PREV="$(git rev-list --max-parents=0 HEAD | tail -n1)"
-          fi
-
-          DATE_UTC="$(date -u +%Y-%m-%d)"
-          BRANCH="${{ github.event.repository.default_branch }}"
-
-          echo "repo=$REPO"     >> "$GITHUB_OUTPUT"
-          echo "tag=$TAG"       >> "$GITHUB_OUTPUT"
-          echo "prev=$PREV"     >> "$GITHUB_OUTPUT"
-          echo "date=$DATE_UTC" >> "$GITHUB_OUTPUT"
-          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
-
-      - name: Build changelog section (supports multi-line body)
-        id: section
-        env:
-          BODY: ${{ github.event.release.body }}
-        run: |
-          REPO="${{ steps.tags.outputs.repo }}"
-          TAG="${{ steps.tags.outputs.tag }}"
-          PREV="${{ steps.tags.outputs.prev }}"
-          DATE="${{ steps.tags.outputs.date }}"
-          BRANCH="${{ steps.tags.outputs.branch }}"
-
-          COMPARE_PREV="https://github.com/${REPO}/compare/${PREV}...${TAG}"
-          COMPARE_UNREL="https://github.com/${REPO}/compare/${TAG}...${BRANCH}"
-          FULL_COMMITS="https://github.com/${REPO}/commits/${TAG}"
-
-          # Start fresh section
-          {
-            echo "## [Unreleased](${COMPARE_UNREL})"
-            echo
-            echo "## [${TAG}](${COMPARE_PREV}) - ${DATE}"
-            echo
-          } > .changelog_section
-
-          # Append multi-line release body verbatim (normalize CRLF -> LF)
-          if [ -n "$BODY" ]; then
-            printf "%s" "$BODY" | sed 's/\r$//' >> .changelog_section
-            echo >> .changelog_section
-            echo >> .changelog_section
-          else
-            echo "- Update change log" >> .changelog_section
-            echo >> .changelog_section
-          fi
-
-          # Append footer
-          echo "**Full Changelog**: ${FULL_COMMITS}" >> .changelog_section
-          echo >> .changelog_section
-
-      - name: Prepend to CHANGELOG.md
-        run: |
-          if [ -f CHANGELOG.md ]; then
-            if ! head -n1 CHANGELOG.md | grep -q "^# Release Notes$"; then
-              { echo "# Release Notes"; echo; cat .changelog_section; cat CHANGELOG.md; } > CHANGELOG.new
-            else
-              awk 'NR==1{print; print ""; system("cat .changelog_section"); next} {print}' CHANGELOG.md > CHANGELOG.new
-            fi
-          else
-            { echo "# Release Notes"; echo; cat .changelog_section; } > CHANGELOG.new
-          fi
-          mv CHANGELOG.new CHANGELOG.md
-
-      - name: Commit and push changes
-        run: |
-          if git diff --quiet CHANGELOG.md; then
-            echo "No changes in CHANGELOG.md"
-            exit 0
-          fi
-          git add CHANGELOG.md
-          git commit -m "docs(changelog): update for ${{ steps.tags.outputs.tag }}"
-          git push
+      - name: Commit updated CHANGELOG
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: ${{ github.event.release.target_commitish }}
+          commit_message: Update CHANGELOG
+          file_pattern: CHANGELOG.md
