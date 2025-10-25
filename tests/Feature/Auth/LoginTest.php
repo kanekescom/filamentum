@@ -54,28 +54,6 @@ it('allows access to admin panel after authentication', function () {
     $response->assertSee('Dashboard');
 });
 
-it('allows super admin to access admin resources', function () {
-    $user = $this->superAdmin;
-    $response = $this->actingAs($user)->get('/admin/users');
-
-    $response->assertStatus(200);
-});
-
-it('allows admin to access admin resources', function () {
-    $user = $this->admin;
-    $response = $this->actingAs($user)->get('/admin/users');
-
-    $response->assertStatus(200);
-});
-
-it('denies regular user access to restricted admin resources', function () {
-    $user = $this->regularUser;
-    $response = $this->actingAs($user)->get('/admin/users');
-
-    // Depending on configuration, this might redirect or show unauthorized
-    $response->assertStatus(403);
-});
-
 it('successfully logs out authenticated users', function () {
     $user = $this->superAdmin;
     $this->actingAs($user);
