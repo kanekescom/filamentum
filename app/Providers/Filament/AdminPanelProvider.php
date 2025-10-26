@@ -29,9 +29,11 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->registration(\App\Filament\Pages\Auth\Register::class)
-            ->passwordReset()
-            ->profile(page: true, isSimple: false)
+            ->when(config('filamentum.features.registration', true), fn($panel) => $panel->registration(\App\Filament\Pages\Auth\Register::class))
+            ->when(config('filamentum.features.password_reset', false), fn($panel) => $panel->passwordReset())
+            ->when(config('filamentum.features.email_verification', false), fn($panel) => $panel->emailVerification())
+            ->when(config('filamentum.features.email_change_verification', false), fn($panel) => $panel->emailChangeVerification())
+            ->when(config('filamentum.features.profile', true), fn($panel) => $panel->profile())
             ->colors([
                 'primary' => Color::Amber,
             ])
