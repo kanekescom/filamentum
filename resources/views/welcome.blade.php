@@ -107,17 +107,17 @@
         </style>
     </head>
     <body>
-        @if (Route::has('login'))
+        @if (Route::has('filament.app.auth.login'))
             <nav class="nav">
                 <div class="nav-links">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard</a>
+                        <a href="{{ route('filament.app.pages.dashboard') }}" class="nav-link">Dashboard</a>
                     @else
-                        @if (Route::has('login'))
-                            <a href="{{ url('/login') }}" class="nav-link">Log in</a>
+                        @if (Route::has('filament.app.auth.login'))
+                            <a href="{{ route('filament.app.auth.login') }}" class="nav-link">Log in</a>
                         @endif
-                        @if (Route::has('register'))
-                            <a href="{{ url('/register') }}" class="nav-link">Register</a>
+                        @if (Route::has('filament.app.auth.register'))
+                            <a href="{{ route('filament.app.auth.register') }}" class="nav-link">Register</a>
                         @endif
                     @endauth
                 </div>
