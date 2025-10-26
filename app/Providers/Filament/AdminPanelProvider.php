@@ -31,7 +31,7 @@ class AdminPanelProvider extends PanelProvider
             ->login()
             ->registration(\App\Filament\Pages\Auth\Register::class)
             ->passwordReset()
-            ->profile(isSimple: false)
+            ->profile(page: true, isSimple: false)
             ->colors([
                 'primary' => Color::Amber,
             ])
