@@ -33,5 +33,10 @@
         <env name="PULSE_ENABLED" value="false"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
         <env name="NIGHTWATCH_ENABLED" value="false"/>
+        <env name="FILAMENTUM_REGISTRATION" value="true"/>
+        <env name="FILAMENTUM_PASSWORD_RESET" value="true"/>
+        <env name="FILAMENTUM_EMAIL_VERIFICATION" value="true"/>
+        <env name="FILAMENTUM_EMAIL_CHANGE_VERIFICATION" value="true"/>
+        <env name="FILAMENTUM_PROFILE" value="true"/>
     </php>
 </phpunit>
