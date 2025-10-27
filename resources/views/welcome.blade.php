@@ -126,7 +126,7 @@
 
         <main class="container">
             <h1 class="product-name">Filamentum</h1>
-            <p class="description">Laravel 12 starter kit with popular and essential packages pre-installed.</p>
+            <p class="description">Laravel 12 starter kit with the Filament admin panel and essential packages pre-installed.</p>
 
             <div class="links">
                 <a href="https://github.com/kanekescom/filamentum" class="link">Repository</a>
