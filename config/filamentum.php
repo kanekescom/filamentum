@@ -4,6 +4,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Filament Panel Path
+    |--------------------------------------------------------------------------
+    |
+    | This configuration sets the URL path for the Filament admin panel.
+    | You can override this value in your .env file using the FILAMENTUM_ prefix.
+    |
+    */
+
+    'path' => env('FILAMENTUM_PATH', 'app'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Filament Features
     |--------------------------------------------------------------------------
     |
