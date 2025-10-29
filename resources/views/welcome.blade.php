@@ -8,6 +8,9 @@
             :root {
                 color-scheme: light dark;
             }
+            * {
+                box-sizing: border-box;
+            }
             body {
                 margin: 0;
                 padding: 0;
@@ -17,6 +20,7 @@
                 flex-direction: column;
                 background: #fff;
                 color: #1a1a1a;
+                overflow-x: hidden;
             }
             @media (prefers-color-scheme: dark) {
                 body {
@@ -75,6 +79,7 @@
                 border: 1px solid #3b82f6;
                 font-weight: 500;
                 margin: 0 0.5rem;
+                white-space: nowrap;
             }
             .link:hover {
                 color: #3b82f6;
@@ -142,7 +147,7 @@
             }
             footer {
                 text-align: center;
-                padding: 1.5rem 0 1rem;
+                padding: 1.5rem 1rem 1rem;
                 color: #666;
                 font-size: 0.875rem;
             }
@@ -156,6 +161,9 @@
                 font-size: 0.8rem;
             }
             @media (max-width: 768px) {
+                body {
+                    overflow-x: hidden;
+                }
                 .container {
                     padding: 1rem;
                 }
@@ -173,6 +181,12 @@
                 .link {
                     width: 100%;
                     max-width: 300px;
+                    margin: 0;
+                }
+                .nav {
+                    position: absolute;
+                    top: 0.5rem;
+                    right: 0.5rem;
                 }
             }
         </style>
