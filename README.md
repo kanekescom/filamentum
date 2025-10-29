@@ -199,4 +199,4 @@ Refer to each package's documentation for specific installation and configuratio
 
 ## License
 
-Filamentum is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Filamentum is open-sourced software licensed under the [MIT license](LICENSE).
