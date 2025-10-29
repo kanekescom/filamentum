@@ -18,7 +18,7 @@ beforeEach(function () {
 it('allows super admin to access dashboard', function () {
     $this->actingAs($this->superAdmin);
 
-    $response = $this->get('/admin');
+    $response = $this->get(route('filament.app.pages.dashboard'));
     $response->assertStatus(200);
     $response->assertSee('Dashboard');
 });
@@ -26,7 +26,7 @@ it('allows super admin to access dashboard', function () {
 it('allows admin to access dashboard', function () {
     $this->actingAs($this->admin);
 
-    $response = $this->get('/admin');
+    $response = $this->get(route('filament.app.pages.dashboard'));
     $response->assertStatus(200);
     $response->assertSee('Dashboard');
 });
@@ -34,7 +34,7 @@ it('allows admin to access dashboard', function () {
 it('allows regular user to access dashboard', function () {
     $this->actingAs($this->regularUser);
 
-    $response = $this->get('/admin');
+    $response = $this->get(route('filament.app.pages.dashboard'));
     $response->assertStatus(200);
     $response->assertSee('Dashboard');
 });
@@ -43,7 +43,7 @@ it('allows regular user to access dashboard', function () {
 it('displays correct dashboard content for super admin', function () {
     $this->actingAs($this->superAdmin);
 
-    $response = $this->get('/admin');
+    $response = $this->get(route('filament.app.pages.dashboard'));
     $response->assertStatus(200);
 
     // Check for common dashboard elements
@@ -54,7 +54,7 @@ it('displays correct dashboard content for super admin', function () {
 it('displays correct dashboard content for admin', function () {
     $this->actingAs($this->admin);
 
-    $response = $this->get('/admin');
+    $response = $this->get(route('filament.app.pages.dashboard'));
     $response->assertStatus(200);
 
     // Check for common dashboard elements
@@ -65,7 +65,7 @@ it('displays correct dashboard content for admin', function () {
 it('displays correct dashboard content for regular user', function () {
     $this->actingAs($this->regularUser);
 
-    $response = $this->get('/admin');
+    $response = $this->get(route('filament.app.pages.dashboard'));
     $response->assertStatus(200);
 
     // Check for common dashboard elements
@@ -75,17 +75,17 @@ it('displays correct dashboard content for regular user', function () {
 
 // Dashboard Security Tests
 it('redirects unauthenticated users to login page', function () {
-    $response = $this->get('/admin');
+    $response = $this->get(route('filament.app.pages.dashboard'));
 
     $response->assertStatus(302);
-    $response->assertRedirect('/admin/login');
+    $response->assertRedirect(route('filament.app.auth.login'));
 });
 
 // Dashboard Navigation Tests
 it('displays navigation menu for super admin', function () {
     $this->actingAs($this->superAdmin);
 
-    $response = $this->get('/admin');
+    $response = $this->get(route('filament.app.pages.dashboard'));
     $response->assertStatus(200);
 
     // Check for navigation elements
@@ -97,7 +97,7 @@ it('displays navigation menu for super admin', function () {
 it('displays navigation menu for admin', function () {
     $this->actingAs($this->admin);
 
-    $response = $this->get('/admin');
+    $response = $this->get(route('filament.app.pages.dashboard'));
     $response->assertStatus(200);
 
     // Check for navigation elements
@@ -110,7 +110,7 @@ it('displays navigation menu for admin', function () {
 it('displays limited navigation menu for regular user', function () {
     $this->actingAs($this->regularUser);
 
-    $response = $this->get('/admin');
+    $response = $this->get(route('filament.app.pages.dashboard'));
     $response->assertStatus(200);
 
     // Check for navigation elements
@@ -126,11 +126,11 @@ it('maintains session when accessing dashboard', function () {
     $this->actingAs($this->superAdmin);
 
     // Access dashboard multiple times
-    $response = $this->get('/admin');
+    $response = $this->get(route('filament.app.pages.dashboard'));
     $response->assertStatus(200);
     $response->assertSee($this->superAdmin->name);
 
-    $response = $this->get('/admin');
+    $response = $this->get(route('filament.app.pages.dashboard'));
     $response->assertStatus(200);
     $response->assertSee($this->superAdmin->name);
 });

@@ -15,7 +15,7 @@ beforeEach(function () {
 });
 
 it('displays the login page with correct content', function () {
-    $response = $this->get('/admin/login');
+    $response = $this->get(route('filament.app.auth.login'));
 
     $response->assertStatus(200);
     $response->assertSee('Login');
@@ -28,7 +28,7 @@ it('displays the login page with correct content', function () {
 });
 
 it('displays login form with proper structure', function () {
-    $response = $this->get('/admin/login');
+    $response = $this->get(route('filament.app.auth.login'));
 
     $response->assertStatus(200);
     // Check for form element
@@ -40,15 +40,15 @@ it('displays login form with proper structure', function () {
 });
 
 it('redirects unauthenticated users to login page', function () {
-    $response = $this->get('/admin');
+    $response = $this->get(route('filament.app.pages.dashboard'));
 
     $response->assertStatus(302);
-    $response->assertRedirect('/admin/login');
+    $response->assertRedirect(route('filament.app.auth.login'));
 });
 
 it('allows access to admin panel after authentication', function () {
     $user = $this->superAdmin;
-    $response = $this->actingAs($user)->get('/admin');
+    $response = $this->actingAs($user)->get(route('filament.app.pages.dashboard'));
 
     $response->assertStatus(200);
     $response->assertSee('Dashboard');
@@ -62,19 +62,19 @@ it('successfully logs out authenticated users', function () {
     $this->assertAuthenticatedAs($user);
 
     // Test logout
-    $response = $this->post('/admin/logout');
+    $response = $this->post(route('filament.app.auth.logout'));
 
     $response->assertStatus(302);
-    $response->assertRedirect('/admin/login');
+    $response->assertRedirect(route('filament.app.auth.login'));
     $this->assertGuest();
 });
 
 it('redirects authenticated users away from login page', function () {
     $user = $this->superAdmin;
-    $response = $this->actingAs($user)->get('/admin/login');
+    $response = $this->actingAs($user)->get(route('filament.app.auth.login'));
 
     $response->assertStatus(302);
-    $response->assertRedirect('/admin');
+    $response->assertRedirect(route('filament.app.pages.dashboard'));
 });
 
 it('maintains proper session state', function () {
@@ -89,7 +89,7 @@ it('maintains proper session state', function () {
     $this->assertAuthenticatedAs($user);
 
     // Logout
-    $this->post('/admin/logout');
+    $this->post(route('filament.app.auth.logout'));
 
     // Should be a guest again
     $this->assertGuest();
@@ -103,15 +103,15 @@ it('prevents access to admin resources after logout', function () {
     $this->assertAuthenticated();
 
     // Access protected resource
-    $response = $this->get('/admin');
+    $response = $this->get(route('filament.app.pages.dashboard'));
     $response->assertStatus(200);
 
     // Logout
-    $this->post('/admin/logout');
+    $this->post(route('filament.app.auth.logout'));
     $this->assertGuest();
 
     // Try to access protected resource again
-    $response = $this->get('/admin');
+    $response = $this->get(route('filament.app.pages.dashboard'));
     $response->assertStatus(302);
-    $response->assertRedirect('/admin/login');
+    $response->assertRedirect(route('filament.app.auth.login'));
 });

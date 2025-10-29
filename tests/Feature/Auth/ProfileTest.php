@@ -15,16 +15,16 @@ beforeEach(function () {
 });
 
 it('redirects unauthenticated users to login when accessing profile', function () {
-    $response = $this->get('/admin/profile');
+    $response = $this->get(route('filament.app.auth.profile'));
 
     $response->assertStatus(302);
-    $response->assertRedirect('/admin/login');
+    $response->assertRedirect(route('filament.app.auth.login'));
 });
 
 it('displays profile page with correct content for super admin', function () {
     // Authenticate as super admin
     $user = $this->superAdmin;
-    $response = $this->actingAs($user)->get('/admin/profile');
+    $response = $this->actingAs($user)->get(route('filament.app.auth.profile'));
 
     $response->assertStatus(200);
     $response->assertSee('Profile');
@@ -35,7 +35,7 @@ it('displays profile page with correct content for super admin', function () {
 it('displays profile page with correct content for admin', function () {
     // Authenticate as admin
     $user = $this->admin;
-    $response = $this->actingAs($user)->get('/admin/profile');
+    $response = $this->actingAs($user)->get(route('filament.app.auth.profile'));
 
     $response->assertStatus(200);
     $response->assertSee('Profile');
@@ -46,7 +46,7 @@ it('displays profile page with correct content for admin', function () {
 it('displays profile page with correct content for regular user', function () {
     // Authenticate as regular user
     $user = $this->regularUser;
-    $response = $this->actingAs($user)->get('/admin/profile');
+    $response = $this->actingAs($user)->get(route('filament.app.auth.profile'));
 
     $response->assertStatus(200);
     $response->assertSee('Profile');
@@ -57,7 +57,7 @@ it('displays profile page with correct content for regular user', function () {
 it('shows profile form with proper structure for super admin', function () {
     // Authenticate as super admin
     $user = $this->superAdmin;
-    $response = $this->actingAs($user)->get('/admin/profile');
+    $response = $this->actingAs($user)->get(route('filament.app.auth.profile'));
 
     $response->assertStatus(200);
     // Check for form elements
@@ -70,7 +70,7 @@ it('shows profile form with proper structure for super admin', function () {
 it('shows profile form with proper structure for admin', function () {
     // Authenticate as super admin
     $user = $this->admin;
-    $response = $this->actingAs($user)->get('/admin/profile');
+    $response = $this->actingAs($user)->get(route('filament.app.auth.profile'));
 
     $response->assertStatus(200);
     // Check for form elements
@@ -83,7 +83,7 @@ it('shows profile form with proper structure for admin', function () {
 it('shows profile form with proper structure for regular user', function () {
     // Authenticate as super admin
     $user = $this->regularUser;
-    $response = $this->actingAs($user)->get('/admin/profile');
+    $response = $this->actingAs($user)->get(route('filament.app.auth.profile'));
 
     $response->assertStatus(200);
     // Check for form elements
@@ -96,7 +96,7 @@ it('shows profile form with proper structure for regular user', function () {
 it('prevents users from accessing other users profiles', function () {
     // Authenticate as regular user
     $user = $this->regularUser;
-    $response = $this->actingAs($user)->get('/admin/profile');
+    $response = $this->actingAs($user)->get(route('filament.app.auth.profile'));
 
     $response->assertStatus(200);
     $response->assertSee($user->name);
@@ -111,11 +111,11 @@ it('maintains proper session when accessing profile', function () {
     $user = $this->admin;
 
     // Access profile multiple times
-    $response = $this->actingAs($user)->get('/admin/profile');
+    $response = $this->actingAs($user)->get(route('filament.app.auth.profile'));
     $response->assertStatus(200);
     $response->assertSee($user->name);
 
-    $response = $this->get('/admin/profile');
+    $response = $this->get(route('filament.app.auth.profile'));
     $response->assertStatus(200);
     $response->assertSee($user->name);
 });
@@ -126,23 +126,23 @@ it('redirects to login after logout when accessing profile', function () {
     $this->actingAs($user);
 
     // Access profile
-    $response = $this->get('/admin/profile');
+    $response = $this->get(route('filament.app.auth.profile'));
     $response->assertStatus(200);
 
     // Logout
-    $response = $this->post('/admin/logout');
+    $response = $this->post(route('filament.app.auth.logout'));
     $response->assertStatus(302);
     $this->assertGuest();
 
     // Try to access profile again
-    $response = $this->get('/admin/profile');
+    $response = $this->get(route('filament.app.auth.profile'));
     $response->assertStatus(302);
-    $response->assertRedirect('/admin/login');
+    $response->assertRedirect(route('filament.app.auth.login'));
 });
 
 it('allows super admin to access profile after authentication', function () {
     // Test super admin
-    $response = $this->actingAs($this->superAdmin)->get('/admin/profile');
+    $response = $this->actingAs($this->superAdmin)->get(route('filament.app.auth.profile'));
     $response->assertStatus(200);
     $response->assertSee($this->superAdmin->name);
     $response->assertSee($this->superAdmin->email);
@@ -150,7 +150,7 @@ it('allows super admin to access profile after authentication', function () {
 
 it('allows admin to access profile after authentication', function () {
     // Test admin
-    $response = $this->actingAs($this->admin)->get('/admin/profile');
+    $response = $this->actingAs($this->admin)->get(route('filament.app.auth.profile'));
     $response->assertStatus(200);
     $response->assertSee($this->admin->name);
     $response->assertSee($this->admin->email);
@@ -158,7 +158,7 @@ it('allows admin to access profile after authentication', function () {
 
 it('allows regular user to access profile after authentication', function () {
     // Test regular user
-    $response = $this->actingAs($this->regularUser)->get('/admin/profile');
+    $response = $this->actingAs($this->regularUser)->get(route('filament.app.auth.profile'));
     $response->assertStatus(200);
     $response->assertSee($this->regularUser->name);
     $response->assertSee($this->regularUser->email);
@@ -169,13 +169,13 @@ it('prevents profile access after logout', function () {
     $this->actingAs($this->superAdmin);
 
     // Access profile
-    $response = $this->get('/admin/profile');
+    $response = $this->get(route('filament.app.auth.profile'));
     $response->assertStatus(200);
 
     // Logout
-    $this->post('/admin/logout');
+    $this->post(route('filament.app.auth.logout'));
 
     // Try to access profile again
-    $response = $this->get('/admin/profile');
-    $response->assertRedirect('/admin/login');
+    $response = $this->get(route('filament.app.auth.profile'));
+    $response->assertRedirect(route('filament.app.auth.login'));
 });
