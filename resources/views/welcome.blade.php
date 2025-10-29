@@ -63,6 +63,7 @@
                 gap: 1.5rem;
                 justify-content: center;
                 flex-wrap: wrap;
+                width: 100%;
             }
             .link {
                 text-decoration: none;
@@ -167,6 +168,7 @@
                 .links {
                     flex-direction: column;
                     gap: 1rem;
+                    align-items: center;
                 }
                 .link {
                     width: 100%;
