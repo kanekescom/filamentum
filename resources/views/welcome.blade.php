@@ -205,7 +205,7 @@
 
         <footer>
             <p>Built with Laravel and Filament.</p>
-            <p class="copyright">© {{ date('Y') }} <a href="https://filamentum.kanekes.com" style="color: inherit; text-decoration: none;">Filamentum</a>. A product of <a href="https://kanekes.com" style="color: inherit; text-decoration: none;">Kanekes</a>.</p>
+            <p class="copyright">© {{ date('Y') }} <a href="https://filamentum.kanekes.com" style="color: #3b82f6; text-decoration: none;">Filamentum</a>. A product of <a href="https://kanekes.com" style="color: #3b82f6; text-decoration: none;">Kanekes</a>.</p>
         </footer>
     </body>
 </html>
